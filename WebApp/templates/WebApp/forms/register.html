@@ -1,0 +1,24 @@
+{% extends 'WebApp/base.html' %}
+
+{% block title %}
+Registrarse
+{% endblock %}
+
+{% block content %}
+
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-4">
+
+    <form action="" method="POST">
+    {% csrf_token %}
+    
+    {{form}}
+    <div>
+        <button type="submit" class="btn btn-primary">Registrarse</button> 
+    </div>
+    </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

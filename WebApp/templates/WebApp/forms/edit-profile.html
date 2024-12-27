@@ -1,0 +1,28 @@
+{% extends 'WebApp/base.html' %}
+
+{% block title %}
+Editar Perfil
+{% endblock %}
+
+{% block content %}
+
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-4">
+        <h1>Editar Perfil</h1>
+        <p>Aca puedes editar tu Perfil {{user.username}}</p>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p}}
+    {{ profile_form.as_p}}
+    <div class="d-flex justify-content-around">
+        <button type="submit" class="btn btn-primary">Editar Perfil</button>
+        <a class="btn btn-secondary" href="{% url 'perfil' %}">Volver</a> 
+
+    </div>
+    </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

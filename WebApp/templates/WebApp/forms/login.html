@@ -1,0 +1,25 @@
+{% extends 'WebApp/base.html' %}
+
+{% block title %}
+Inicio de Sesion
+{% endblock %}
+
+{% block content %}
+
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-4">
+
+    <form action="" method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="username" placeholder="Ingrese nombre de usuario">
+    <input type="password" name="password" placeholder="Ingrese la contraseña">
+    <div>
+        <button type="submit" class="btn btn-primary">Ingresar</button> 
+    </div>
+    </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'WebApp/base.html' %}
+
+{% block title %}
+Formulario Compradores
+{% endblock %}
+
+{% block content %}
+
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-4">
+
+    <form action="" method="POST">
+    {% csrf_token %}
+        <p>¿Estas seguro que quieres eliminar el Comprador {{ comprador.nombre }} {{ comprador.apellido }}?</p>
+    <button type="submit" class="btn btn-primary">Eliminar comprador</button> 
+    </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

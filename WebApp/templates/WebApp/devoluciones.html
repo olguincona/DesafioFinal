@@ -1,0 +1,90 @@
+{% extends 'WebApp/base.html' %}
+{% load static %}
+
+{% block title %}
+    Devoluciones
+{% endblock title %}
+{% block content %}
+<h2 class="text-center mt-2">Buscar Devolucion</h2> 
+<div class="d-flex flex-column align-items-center mb-2">
+    <form action="" method="GET">
+        <input type="text" name="q" placeholder="Buscar..." required>
+        <button type="submit">Buscar</button>
+    </form>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Fecha de Devolucion</th>
+            <th scope="col">Devuelto</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if devoluciones %}
+            {% for devolucion in devoluciones %}
+          <tr class="table-light">
+            <td>{{ devolucion.producto }}</td>
+            <td>{{ devolucion.fechaDeEntrega }}</td>
+            <td>{{ devolucion.devuelto }}</td>
+            {% if user.is_superuser %}
+              <td class="d-flex justify-content-evenly">
+                <a class="btn btn-primary" href="{% url 'devoluciones-vbc-eliminar' devolucion.id %}">Eliminar</a>
+                <a class="btn btn-warning" href="{% url 'devoluciones-vbc-editar' devolucion.id %}">Editar</a>
+
+              </td>
+                {% else %} 
+                 <td class="d-flex justify-content-evenly">
+                    <p>No tiene permisos de edicion</p>
+                 </td>
+              {% endif %}
+          </tr>
+          {% endfor %}
+          {% else %}
+          <tr>
+            <td colspan="4" class="text-center">No hay productos para mostrar</td>
+        </tr>
+        {% endif %}
+        </tbody>
+      </table>
+</div>
+<section class="page-section" id="services">
+  <div class="container">
+      <div class="text-center">
+          <h2 class="section-heading text-uppercase">Servicios</h2>
+          <h3 class="section-subheading text-muted">Pagina especializada en Compra y Venta de Prodcutos</h3>
+      </div>
+      <div class="row text-center">
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                  <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">E-Commerce</h4>
+              <p class="text-muted">Vende tus productos con nosotros</p>
+          </div>
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                  <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">Atencion 24/7</h4>
+              <p class="text-muted">Si necesitas asistencia no dudes en contactarnos!</p>
+          </div>
+          <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                  <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                  <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+              </span>
+              <h4 class="my-3">Web Segura</h4>
+              <p class="text-muted">No te preocupes por tu venta, te aseguramos una transaccion 100% segura</p>
+          </div>
+      </div>
+  </div>
+</section>
+
+{% endblock  %}
+    

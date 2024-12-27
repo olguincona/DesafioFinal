@@ -13,6 +13,9 @@ from .forms import ProductosFormulario,VendedorFormulario,CompradorFormulario,De
 def inicio(request):
     return render(request,"WebApp/index.html")
 
+def aboutus(request):
+    return render(request,"WebApp/aboutus.html")
+
 def show_profile(request):
     return render(request,"WebApp/forms/show-profile.html")
 
